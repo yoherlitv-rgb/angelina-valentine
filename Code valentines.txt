@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Angelina 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 520px;
+  animation: fadeIn 2s;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 2.6em;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.gallery img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 90px;
+}
+
+button {
+  padding: 12px 30px;
+  font-size: 1em;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.2s;
+}
+
+#yes {
+  background: #ff4b6e;
+  color: white;
+  left: 30%;
+}
+
+#yes:hover {
+  transform: scale(1.1);
+}
+
+#no {
+  background: white;
+  color: #ff4b6e;
+  left: 55%;
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% { opacity: 1; }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Angelina 💕</h1>
+  <p id="text">Some of my favorite moments with you 💖</p>
+
+  <!-- PHOTO GALLERY -->
+  <div class="gallery">
+    <img src="pic1.jpg" alt="Us">
+    <img src="pic2.jpg" alt="Us">
+    <img src="pic3.jpg" alt="Us">
+  </div>
+
+  <p>Will you be my Valentine?</p>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClick()">Yes 💖</button>
+    <button id="no" onmouseover="moveNo()">No 💔</button>
+  </div>
+</div>
+
+<script>
+function yesClick() {
+  document.getElementById("text").innerHTML =
+    "You + Me = Forever 💘<br><br>I love you so much, Angelina ❤️";
+  document.querySelector(".buttons").style.display = "none";
+}
+
+function moveNo() {
+  const no = document.getElementById("no");
+  no.style.left = Math.random() * 70 + "%";
+  no.style.top = Math.random() * 60 + "%";
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
